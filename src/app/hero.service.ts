@@ -11,7 +11,6 @@ export class HeroService {
   constructor() { }
 
   getHeroes(): Observable<Hero[]> {
-    for (let i = 0; i < 10000000000; i++) { }
     return of(HEROES);
   }
 }
