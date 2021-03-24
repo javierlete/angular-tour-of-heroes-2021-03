@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroesComponent } from './heroes.component';
@@ -8,7 +9,8 @@ describe('HeroesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroesComponent ]
+      declarations: [ HeroesComponent ],
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
   });
@@ -21,5 +23,12 @@ describe('HeroesComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('debería tener un botón "Add Hero"', () => {
+    fixture = TestBed.createComponent(HeroesComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.add-button').textContent.trim()).toEqual('Add hero'); // .toMatch(/^\W*Add hero\W*$/);
   });
 });
